@@ -8,25 +8,15 @@ function deleteFile(filePath) {
   try {
     fs.unlinkSync(filePath);
     console.log(`Deleted ${filePath}`);
-  } catch (err) {
-    console.error(`Error deleting ${filePath}:`, err);
+  } catch {
+    // console.error(`No file named ${filePath} to delete.`);
   }
+
 }
 
-// Delete the sw.js and sw.js.map files
+// Delete the sw.js file, if present
 deleteFile(path.join(directory, 'sw.js'));
-// deleteFile(path.join(directory, 'sw.js.map'));
+// Delte the sw-test.js file, if present
+deleteFile(path.join(directory, 'sw-test.js'));
 
-// Delete workbox-HASH.js and workbox-HASH.js.map files
-fs.readdir(directory, (err, files) => {
-  if (err) {
-    console.error(`Error reading directory ${directory}:`, err);
-    return;
-  }
-
-  files.forEach((file) => {
-    if (/workbox-.*\.(js|js\.map)$/.test(file)) {
-      deleteFile(path.join(directory, file));
-    }
-  });
-});
+console.log(`Cleaned old service worker files from the '${directory}' directory.`);
