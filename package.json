@@ -4,7 +4,8 @@
   "description": "This is an example to help set up a service worker with Workbox",
   "scripts": {
     "clean-sw": "node clean-sw.js",
-    "workbox-dev-1": "esbuild --outfile=web/sw-test.js --bundle sw.ts"
+    "workbox-dev-1": "esbuild --outfile=web/sw-test.js --bundle sw.ts",
+    "workbox-dev-1-build": "esbuild --outfile=web/sw.js --minify --bundle sw.ts"
   },
   "author": "John F Morton",
   "license": "ISC",
