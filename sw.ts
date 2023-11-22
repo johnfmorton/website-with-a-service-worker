@@ -4,15 +4,15 @@
  */
 
 import { precacheAndRoute } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
-import { CacheFirst, NetworkFirst } from 'workbox-strategies';
-import { ExpirationPlugin } from 'workbox-expiration';
-import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+// import { registerRoute } from 'workbox-routing';
+// import { CacheFirst, NetworkFirst } from 'workbox-strategies';
+// import { ExpirationPlugin } from 'workbox-expiration';
+// import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
-import { offlineFallback } from 'workbox-recipes';
+// import { offlineFallback } from 'workbox-recipes';
 
-const pageFallback = 'offline-message.html';
-const imageFallback = 'offline-clouds.jpg';
+// const pageFallback = 'offline-message.html';
+// const imageFallback = 'offline-clouds.jpg';
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -22,58 +22,58 @@ declare const self: ServiceWorkerGlobalScope;
 precacheAndRoute(self.__WB_MANIFEST);
 
 // Register a navigation route to respond with the cached offline page and image.
-offlineFallback({
-  pageFallback,
-  imageFallback
-});
+// offlineFallback({
+//   pageFallback,
+//   imageFallback
+// });
 
-registerRoute(
-  ({ url }) =>
-  (
-    !_isAction(url) &&
-    !_isAdmin(url) &&
-    !_hasUtm(url) &&
-    !_hasFbclid(url) &&
-    !_isCpResource(url)
-    ),
-  new NetworkFirst({
-    cacheName: 'supergeekery-html-cache',
-    plugins: [
-      {
-        handlerDidError: async () => {
-          return caches.match('/offline-message.html'); // Return the offline HTML page
-        },
-      },
-    ],
-  }),
-);
+// registerRoute(
+//   ({ url }) =>
+//   (
+//     !_isAction(url) &&
+//     !_isAdmin(url) &&
+//     !_hasUtm(url) &&
+//     !_hasFbclid(url) &&
+//     !_isCpResource(url)
+//     ),
+//   new NetworkFirst({
+//     cacheName: 'supergeekery-html-cache',
+//     plugins: [
+//       {
+//         handlerDidError: async () => {
+//           return caches.match('/offline-message.html'); // Return the offline HTML page
+//         },
+//       },
+//     ],
+//   }),
+// );
 
 
-registerRoute(
-  ({ url }) => url.origin === 'https://static.supergeekery.com',
-  // https://unpkg.com/browse/@types/workbox-strategies@4.3.0/CacheFirst.d.ts
-  new CacheFirst({
-    cacheName: 'supergeekery-static-cache',
-    fetchOptions: {
-      // https://developer.mozilla.org/en-US/docs/Web/API/Request/mode
-      mode: 'no-cors',
-    },
-    matchOptions: {
-      // https://www.w3.org/TR/service-workers/#cache-query-options-dictionary
-      ignoreVary: true, // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary
-    },
-    plugins: [
-      new ExpirationPlugin({
-        maxEntries: 50,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-      }),
-      // https://tpiros.dev/blog/what-is-an-opaque-response/
-      new CacheableResponsePlugin({
-        statuses: [0, 200], // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-      }),
-    ],
-  }),
-);
+// registerRoute(
+//   ({ url }) => url.origin === 'https://static.supergeekery.com',
+//   // https://unpkg.com/browse/@types/workbox-strategies@4.3.0/CacheFirst.d.ts
+//   new CacheFirst({
+//     cacheName: 'supergeekery-static-cache',
+//     fetchOptions: {
+//       // https://developer.mozilla.org/en-US/docs/Web/API/Request/mode
+//       mode: 'no-cors',
+//     },
+//     matchOptions: {
+//       // https://www.w3.org/TR/service-workers/#cache-query-options-dictionary
+//       ignoreVary: true, // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary
+//     },
+//     plugins: [
+//       new ExpirationPlugin({
+//         maxEntries: 50,
+//         maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+//       }),
+//       // https://tpiros.dev/blog/what-is-an-opaque-response/
+//       new CacheableResponsePlugin({
+//         statuses: [0, 200], // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+//       }),
+//     ],
+//   }),
+// );
 
 // Helper functions for the routes above
 
@@ -85,9 +85,9 @@ registerRoute(
 * to tell you where searchers came from as well as what campaign directed them
 * to a web page.
 */
-function _hasUtm(url: URL) {
-    return url.searchParams.has('utm');
-}
+// function _hasUtm(url: URL) {
+//     return url.searchParams.has('utm');
+// }
 
 /*
 * Does this URL have a fbclid parameter?
@@ -97,9 +97,9 @@ function _hasUtm(url: URL) {
 * automatically added to the URL by Facebook when a user clicks on a link
 * shared on Facebook.
 */
-function _hasFbclid(url: URL) {
-    return url.searchParams.has('fbclid');
-}
+// function _hasFbclid(url: URL) {
+//     return url.searchParams.has('fbclid');
+// }
 
 /*
 * Is this a Craft CMS action URL?
@@ -112,9 +112,9 @@ function _hasFbclid(url: URL) {
 *
 * https://craftcms.com/docs/4.x/extend/controllers.html#action-paths
 */
-function _isAction(url: URL) {
-  return url.pathname.startsWith('/actions/');
-}
+// function _isAction(url: URL) {
+//   return url.pathname.startsWith('/actions/');
+// }
 
 /*
 *  Is this a Craft CMS admin URL?
@@ -127,9 +127,9 @@ function _isAction(url: URL) {
 *
 * https://craftcms.com/docs/4.x/config/general.html#cptrigger
 */
-function _isAdmin(url: URL) {
-  return url.pathname.startsWith('/admin/');
-}
+// function _isAdmin(url: URL) {
+//   return url.pathname.startsWith('/admin/');
+// }
 
 /*
 * Is this a Craft CMS CP resource URL?
@@ -142,6 +142,6 @@ function _isAdmin(url: URL) {
 *
 * https://craftcms.com/docs/4.x/config/general.html#resourcebasepath
 */
-function _isCpResource(url: URL) {
-  return url.pathname.startsWith('/cpresources/');
-}
+// function _isCpResource(url: URL) {
+//   return url.pathname.startsWith('/cpresources/');
+// }
