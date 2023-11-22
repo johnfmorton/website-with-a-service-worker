@@ -4,13 +4,7 @@
   "description": "This is an example to help set up a service worker with Workbox",
   "scripts": {
     "clean-sw": "node clean-sw.js",
-    "build": "npm run build-sw && NODE_ENV=production vite build",
-    "serve": "NODE_ENV=dev vite",
-    "build-sw": "npm run clean-sw && npm run workbox",
-    "workbox": "esbuild --outfile=web/sw.js --minify --bundle sw.ts && workbox injectManifest workbox-config.js",
-    "workbox-dev-1": "esbuild --outfile=web/sw-test.js --bundle sw.ts",
-    "workbox-dev-2": "esbuild --outfile=web/sw-test.js --bundle sw.ts && workbox injectManifest workbox-config-dev.js",
-    "workbox-dev-3": "esbuild --outfile=web/sw-test.js --minify --bundle sw.ts && workbox injectManifest workbox-config-dev.js"
+    "workbox-dev-1": "esbuild --outfile=web/sw-test.js --bundle sw.ts"
   },
   "author": "John F Morton",
   "license": "ISC",
