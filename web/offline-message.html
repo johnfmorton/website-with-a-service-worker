@@ -1,31 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SuperGeekery</title>
   <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-weight: 100 900;
+      font-display: swap;
+      font-style: normal;
+      font-named-instance: 'Regular';
+      src: url("/static/fonts/Inter.var.woff2?v=3.19") format("woff2");
+    }
+
+    @font-face {
+      font-family: 'Inter var';
+      font-weight: 100 900;
+      font-display: swap;
+      font-style: italic;
+      font-named-instance: 'Italic';
+      src: url("/static/fonts/Inter.var.woff2?v=3.19") format("woff2");
+    }
+
     main {
       max-width: 600px;
       margin: 0 auto;
       padding: 1rem;
-      font-family: Inter,sans-serif;
+      font-family: 'Inter var', sans-serif;
     }
+
     h1 {
       font-size: 2rem;
       text-wrap: balance;
     }
+
     .bold {
       font-weight: bold;
     }
+
     a {
       color: #00449e;
     }
+
     p {
       text-wrap: pretty;
     }
   </style>
 </head>
+
 <body>
   <main>
     <svg width="100pt" height="100pt" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto; display:block;">
@@ -35,9 +59,10 @@
       </g>
     </svg>
 
-    <h1>Dang Internet!</h1>
+    <h1>Dang Internet!!</h1>
     <p>Hi there. I tried to load the page you requested from <span class="bold"><a href="https://supergeekery.com">SuperGeekery.com</a></span>, but there was a network error. If you've visited other pages on the site, you may still have them in your cache. I hope to see you again when your internet connection is back up.</p>
     <p>-John</p>
   </main>
 </body>
+
 </html>
