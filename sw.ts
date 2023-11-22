@@ -5,8 +5,7 @@
 
 import { precacheAndRoute } from 'workbox-precaching';
 // import { registerRoute } from 'workbox-routing';
-import {setDefaultHandler} from 'workbox-routing';
-import { CacheFirst, NetworkFirst, NetworkOnly } from 'workbox-strategies';
+import { CacheFirst, NetworkFirst } from 'workbox-strategies';
 // import { ExpirationPlugin } from 'workbox-expiration';
 // import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
@@ -15,8 +14,6 @@ import { offlineFallback } from 'workbox-recipes';
 const pageFallback = 'offline-message.html';
 const imageFallback = 'offline-clouds.jpg';
 const fontFallback = '/static/fonts/Inter.var.woff2?v=3.19';
-
-setDefaultHandler(new NetworkOnly());
 
 declare const self: ServiceWorkerGlobalScope;
 
