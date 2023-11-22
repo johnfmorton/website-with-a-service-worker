@@ -13,6 +13,7 @@ import { offlineFallback } from 'workbox-recipes';
 
 const pageFallback = 'offline-message.html';
 const imageFallback = 'offline-clouds.jpg';
+const fontFallback = '/static/fonts/Inter.var.woff2?v=3.19';
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -24,7 +25,8 @@ precacheAndRoute(self.__WB_MANIFEST);
 // Register a navigation route to respond with the cached offline page and image.
 offlineFallback({
   pageFallback,
-  imageFallback
+  imageFallback,
+  fontFallback
 });
 
 registerRoute(
