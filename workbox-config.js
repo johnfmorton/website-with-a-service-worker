@@ -16,7 +16,7 @@ module.exports = {
   // if you have files inside the globDirectory that
   // you don't want to pre-cache, add them here
   globIgnores: [
-    'an-example-to-exclude-a-file.jpg',
+    'static/example-to-ignore.jpg',
   ],
   swDest: 'web/sw.js',
   swSrc: 'web/sw.js'
