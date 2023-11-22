@@ -5,14 +5,18 @@
 
 import { precacheAndRoute } from 'workbox-precaching';
 // import { registerRoute } from 'workbox-routing';
-// import { CacheFirst, NetworkFirst } from 'workbox-strategies';
+import {setDefaultHandler} from 'workbox-routing';
+import { CacheFirst, NetworkFirst, NetworkOnly } from 'workbox-strategies';
 // import { ExpirationPlugin } from 'workbox-expiration';
 // import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
-// import { offlineFallback } from 'workbox-recipes';
+import { offlineFallback } from 'workbox-recipes';
 
-// const pageFallback = 'offline-message.html';
-// const imageFallback = 'offline-clouds.jpg';
+const pageFallback = 'offline-message.html';
+const imageFallback = 'offline-clouds.jpg';
+const fontFallback = 'fonts/ShantellSans-Medium.ttf';
+
+setDefaultHandler(new NetworkOnly());
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -22,10 +26,11 @@ declare const self: ServiceWorkerGlobalScope;
 precacheAndRoute(self.__WB_MANIFEST);
 
 // Register a navigation route to respond with the cached offline page and image.
-// offlineFallback({
-//   pageFallback,
-//   imageFallback
-// });
+offlineFallback({
+  pageFallback: pageFallback,
+  imageFallback: imageFallback,
+  fontFallback: fontFallback,
+});
 
 // registerRoute(
 //   ({ url }) =>
