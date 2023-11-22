@@ -13,7 +13,8 @@ module.exports = {
     'offline-message.html',
     'offline-clouds.jpg',
   ],
-  // if you have files you don't want to pre-cache, add them here
+  // if you have files inside the globDirectory that
+  // you don't want to pre-cache, add them here
   globIgnores: [
     'static/example-to-ignore.jpg',
   ],

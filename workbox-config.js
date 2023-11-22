@@ -13,10 +13,10 @@ module.exports = {
     'offline-message.html',
     'offline-clouds.jpg',
   ],
-  // These options are not required, because they don't fall within
-  // the globPatterns above. That's why they're commented out.
+  // if you have files inside the globDirectory that
+  // you don't want to pre-cache, add them here
   globIgnores: [
-    // 'an-example-to-exclude-a-file.jpg',
+    'an-example-to-exclude-a-file.jpg',
   ],
   swDest: 'web/sw.js',
   swSrc: 'web/sw.js'
